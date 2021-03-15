@@ -1,3 +1,37 @@
+* {
+    font-family: Arial;
+}
+
 p {
- color: rgb(36, 74, 201);
+    padding: 10px;
+}
+
+h1, h2 { 
+    color: darkblue;
+    font-variant: small-caps;
+    padding: 10px;
+}
+
+img.main-img {
+    border: 2px solid rgb(36, 74, 201);
+    border-radius: 50%;
+    width:70%;
+    height:auto;
+}
+
+input { 
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 3px 5px;
+    margin-bottom: 10px;
+}
+
+a { 
+    color: darkblue;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.main-div {
+    background-color: #c9e0ff;
 }
