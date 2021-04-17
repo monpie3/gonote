@@ -33,20 +33,7 @@
             </div>
             <div class="col-12 col-md-7 col-lg-8 bg-white p-0">
                 <div class="cover d-none d-sm-block"></div>
-                <form class="py-4 px-3" v-on:submit.prevent="addNote()">
-                    <div class="mb-3">
-                        <label for="note_name" class="form-label">Tytuł notatki</label>
-                        <input type="text" class="form-control" id="note_name" placeholder="My first note.." v-model="newNoteName">
-                    </div>
-                    <div class="mb-3">
-                        <label for="note_content" class="form-label">Treść notatki</label>
-                        <textarea class="form-control" id="note_content" rows="5" v-model="newNoteContent"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">
-                        <i class="bi bi-eye-asterisk"></i>
-                        Stwórz nową notatkę
-                    </button>
-                </form>
+                <note-add-form v-on:onAddNote="addNote($event)"></note-add-form>
             </div>
         </div>
     </div>
@@ -64,20 +51,17 @@
 </template>
 
 <script>
+    import NoteAddForm from "./compontents/NoteAddForm.vue";
+
     export default {
-        components: {},
+        components: {NoteAddForm},
         data: function() {
             return {
                 notes: [],
-                newNoteName: null,
-                newNoteContent: null,
             }
         },
         methods : {
-            addNote: function() {
-                var note = {name: this.newNoteName, content: this.newNoteContent};
-                this.newNoteName = null;
-                this.newNoteContent = null;
+            addNote: function(note) {
                 this.notes.push(note)
             }
         }
