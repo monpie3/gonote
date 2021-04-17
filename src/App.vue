@@ -15,7 +15,7 @@
                     Jeszcze nie ma żadnych notatek do wyświetlenia
                 </div>
                 <div class="list-group pt-3 pb-5 px-1">
-                    <div class="list-group-item">
+                    <div v-for="note in notes" v-bind:key="note.name" class="list-group-item">
                         <div class="float-end">
                             <div class="btn-group" role="group">
                                 <button type="button" class="btn btn-outline-danger">
@@ -26,51 +26,21 @@
                                 </button>
                             </div>
                         </div>
-                        <h5 class="mb-1">Notatka 1</h5>
+                        <h5 class="mb-1">{{ note.name }}</h5>
                         <p class="text-muted">Utworzono 14:15 10.03.2021</p>
-                    </div>
-
-                    <div class="list-group-item">
-                        <div class="float-end">
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-outline-danger">
-                                    <i class="bi-trash-fill"></i>
-                                </button>
-                                <button type="button" class="btn btn-outline-secondary">
-                                    <i class="bi-eye-fill"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <h5 class="mb-1">Notatka 2</h5>
-                        <p class="text-muted">Utworzono 19:15 10.03.2021</p>
-                    </div>
-
-                    <div class="list-group-item">
-                        <div class="float-end">
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-outline-danger">
-                                    <i class="bi-trash-fill"></i>
-                                </button>
-                                <button type="button" class="btn btn-outline-secondary">
-                                    <i class="bi-eye-fill"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <h5 class="mb-1">Notatka 3</h5>
-                        <p class="text-muted">Utworzono 19:40 16.03.2021</p>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-md-7 col-lg-8 bg-white p-0">
                 <div class="cover d-none d-sm-block"></div>
-                <form class="py-4 px-3">
+                <form class="py-4 px-3" v-on:submit.prevent="addNote()">
                     <div class="mb-3">
                         <label for="note_name" class="form-label">Tytuł notatki</label>
-                        <input type="text" class="form-control" id="note_name" placeholder="My first note..">
+                        <input type="text" class="form-control" id="note_name" placeholder="My first note.." v-model="newNoteName">
                     </div>
                     <div class="mb-3">
                         <label for="note_content" class="form-label">Treść notatki</label>
-                        <textarea class="form-control" id="note_content"></textarea>
+                        <textarea class="form-control" id="note_content" rows="5" v-model="newNoteContent"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary w-100">
                         <i class="bi bi-eye-asterisk"></i>
@@ -92,6 +62,29 @@
         </div>
     </nav>
 </template>
+
+<script>
+    export default {
+        components: {},
+        data: function() {
+            return {
+                notes: [],
+                newNoteName: null,
+                newNoteContent: null,
+            }
+        },
+        methods : {
+            addNote: function() {
+                var note = {name: this.newNoteName, content: this.newNoteContent};
+                this.newNoteName = null;
+                this.newNoteContent = null;
+                this.notes.push(note)
+            }
+        }
+    }
+</script>
+
+
 
 <style>
 .cover {
