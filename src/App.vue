@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="pl">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style.css">
-    <title> GoNote </title>
-</head>
-
-<body>
+<template>
     <div class="container-fluid p-0 m-0">
         <div class="row p-0 m-0">
             <div class="col-12 col-md-5 col-lg-4 bg-light p-0">
@@ -93,8 +80,24 @@
             </div>
         </div>
     </div>
+    <nav class="navbar fixed-bottom navbar-dark bg-dark">
+        <div class="container-fluid justify-content-end p-2">
+            <span class="text-muted mx-5 d-none d-md-block">
+                ©2021 Polityka prywatności | Warunki korzystania z usługi
+            </span>
+            <span class="text-light">
+                <i class="bi bi-heart-fill"></i>
+                Moje konto
+            </span>
+        </div>
+    </nav>
+</template>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+<style>
+.cover {
+    background-image: url("./assets/background.jpg");
+    background-position: center;
+    background-size: cover;
+    min-height: 150px;
+}
+</style>
