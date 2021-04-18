@@ -12,7 +12,7 @@
                 </div>
             </div>
             <h5 class="mb-1 text-break text-wrap">{{ note.name }}</h5>
-            <p class="text-muted">Utworzono {{ note.createdAt }} </p>
+            <small class="text-muted">Utworzono {{ note.date }} </small>
         </div>
     </div>
 </template>
