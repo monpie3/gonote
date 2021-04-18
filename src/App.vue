@@ -10,7 +10,7 @@
                     <i class="bi bi-pen-fill"></i>
                     Stwórz nową notatkę
                 </button>
-                <div class="alert alert-secondary m-3 text-center">
+                <div v-if="notes.length == 0" class="alert alert-secondary m-3 text-center">
                     <i class="bi bi-emoji-frown"></i>
                     Jeszcze nie ma żadnych notatek do wyświetlenia
                 </div>
