@@ -14,22 +14,7 @@
                     <i class="bi bi-emoji-frown"></i>
                     Jeszcze nie ma żadnych notatek do wyświetlenia
                 </div>
-                <div class="list-group pt-3 pb-5 px-1">
-                    <div v-for="note in notes" v-bind:key="note.name" class="list-group-item">
-                        <div class="float-end">
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-outline-danger">
-                                    <i class="bi-trash-fill"></i>
-                                </button>
-                                <button type="button" class="btn btn-outline-secondary">
-                                    <i class="bi-eye-fill"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <h5 class="mb-1">{{ note.name }}</h5>
-                        <p class="text-muted">Utworzono 14:15 10.03.2021</p>
-                    </div>
-                </div>
+                <notes-list v-bind:notes="notes"></notes-list>
             </div>
             <div class="col-12 col-md-7 col-lg-8 bg-white p-0">
                 <div class="cover d-none d-sm-block"></div>
@@ -52,9 +37,10 @@
 
 <script>
     import NoteAddForm from "./compontents/NoteAddForm.vue";
+    import NotesList from "./compontents/NotesList.vue";
 
     export default {
-        components: {NoteAddForm},
+        components: {NoteAddForm, NotesList},
         data: function() {
             return {
                 notes: [],
