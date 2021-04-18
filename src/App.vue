@@ -28,8 +28,8 @@
             <span class="text-muted mx-5 d-none d-md-block">
                 ©2021 Polityka prywatności | Warunki korzystania z usługi
             </span>
-            <span class="text-light">
-                <i class="bi bi-heart-fill"></i>
+            <span class="text-light pe-2">
+                <i class="bi bi-heart-fill pe-1"></i>
                 Moje konto
             </span>
         </div>

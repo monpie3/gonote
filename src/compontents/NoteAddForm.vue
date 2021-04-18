@@ -10,7 +10,7 @@
         </div>
         <button type="submit" class="btn btn-primary w-100">
             <i class="bi bi-eye-asterisk"></i>
-            Stwórz nową notatkę
+            Dodaj notatkę
         </button>
     </form>
 </template>
@@ -27,7 +27,8 @@
         },
         methods : {
             addNote: function() {
-                var note = {name: this.newNoteName, content: this.newNoteContent};
+                var date = (new Date()).toLocaleString("pl-Pl");
+                var note = {name: this.newNoteName, content: this.newNoteContent, createdAt: date };
                 this.newNoteName = null;
                 this.newNoteContent = null;
                 this.$emit("on-add-note", note);

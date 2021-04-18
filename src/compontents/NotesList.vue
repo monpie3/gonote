@@ -11,8 +11,8 @@
                     </button>
                 </div>
             </div>
-            <h5 class="mb-1">{{ note.name }}</h5>
-            <p class="text-muted">Utworzono 14:15 10.03.2021</p>
+            <h5 class="mb-1 text-break text-wrap">{{ note.name }}</h5>
+            <p class="text-muted">Utworzono {{ note.createdAt }} </p>
         </div>
     </div>
 </template>
