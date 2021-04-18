@@ -6,7 +6,7 @@
                     <button type="button" class="btn btn-outline-danger">
                         <i class="bi-trash-fill"></i>
                     </button>
-                    <button type="button" class="btn btn-outline-secondary">
+                    <button type="button" class="btn btn-outline-secondary" v-on:click="showNote(note)">
                         <i class="bi-eye-fill"></i>
                     </button>
                 </div>
@@ -24,6 +24,10 @@
         data: function() {
             return {}
         },
-        methods : {},
+        methods : {
+             showNote: function (note) {
+                this.$emit("on-show-note", note);
+            },
+        },
     }
 </script>

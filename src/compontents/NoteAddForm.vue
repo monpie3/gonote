@@ -2,7 +2,7 @@
     <form class="py-4 px-3" v-on:submit.prevent="addNote()">
         <div class="mb-3">
             <label for="note_name" class="form-label">Tytuł notatki</label>
-            <input type="text" class="form-control" id="note_name" placeholder="My first note.." v-model="newNoteName">
+            <input type="text" class="form-control" id="note_name" v-model="newNoteName">
         </div>
         <div class="mb-3">
             <label for="note_content" class="form-label">Treść notatki</label>
