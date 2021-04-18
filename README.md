@@ -3,6 +3,7 @@
 ## Project setup
 ```
 npm install
+php composer.phar install
 ```
 
 ### Compiles and hot-reloads for development
