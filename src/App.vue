@@ -14,12 +14,12 @@
                     <i class="bi bi-emoji-frown"></i>
                     Jeszcze nie ma żadnych notatek do wyświetlenia
                 </div>
-                <notes-list v-bind:notes="notes" v-on:onShowNote="showNote($event)"></notes-list>
+                <notes-list v-bind:notes="notes" v-on:onShowNote="showNote($event)" v-on:onDeleteNote="deleteNote($event)"></notes-list>
             </div>
             <div class="col-12 col-md-7 col-lg-8 bg-white p-0 h-100 border-start">
                 <div class="cover d-none d-sm-block"></div>
                 <note v-if="currentNote != null" v-bind:note="currentNote"></note>
-                <note-add-form v-else v-on:onAddNote="addNote($event)"></note-add-form>
+                <note-add-form v-else-if="showForm" v-on:onAddNote="addNote($event)"></note-add-form>
             </div>
         </div>
     </div>
@@ -47,18 +47,30 @@
             return {
                 notes: [],
                 currentNote: null,
+                showForm: true,
             }
         },
         methods : {
             addNote: function(note) {
-                this.notes.push(note)
+                this.notes.push(note);
+                this.showForm = true;
             },
             showNote: function(note) {
                 this.currentNote = note;
+                this.showForm = false;
             },
             showAddForm: function() {
                 this.currentNote = null;
+                this.showForm = true;
             },
+            deleteNote: function(note) {
+                this.showForm = false;
+                this.notes = this.notes.filter((n) => n !== note);
+                if (this.currentNote == note || this.notes.length == 0) {
+                    this.currentNote = null;
+                    this.showForm = true;
+                }
+            }
         }
     }
 </script>

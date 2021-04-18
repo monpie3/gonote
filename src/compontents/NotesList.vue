@@ -3,7 +3,7 @@
         <div v-for="note in notes" v-bind:key="note.name" class="list-group-item">
             <div class="float-end">
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-outline-danger">
+                    <button type="button" class="btn btn-outline-danger" v-on:click="deleteNote(note)">
                         <i class="bi-trash-fill"></i>
                     </button>
                     <button type="button" class="btn btn-outline-secondary" v-on:click="showNote(note)">
@@ -25,8 +25,11 @@
             return {}
         },
         methods : {
-             showNote: function (note) {
+            showNote: function (note) {
                 this.$emit("on-show-note", note);
+            },
+            deleteNote: function (note) {
+                this.$emit("on-delete-note", note);
             },
         },
     }
