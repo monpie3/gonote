@@ -70,9 +70,14 @@
                     this.currentNote = null;
                     this.showForm = true;
                 }
-            }
-        }
-    }
+            },
+        },
+        mounted() {
+            this.$http.get('notes').then(response => {
+                this.notes = response.data;
+            });
+        },   
+    };
 </script>
 
 
