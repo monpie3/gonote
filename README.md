@@ -7,8 +7,13 @@ php composer.phar install
 ```
 
 ### Compiles and hot-reloads for development
+Frontend:
 ```
 npm run serve
+```
+Backend:
+```
+npm run api
 ```
 
 ### Compiles and minifies for production
