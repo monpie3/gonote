@@ -41,4 +41,19 @@ $app->get(
     }
 );
 
+$app->post(
+    '/api/notes',
+    function (Request $request, Response $response, array $args) use($db) {
+    $note = json_decode($request->getBody(), true);
+    $date = date('Y-m-d');
+    $db->query("INSERT INTO note (name, date, content) VALUES ('$note[name]', '$date', '$note[content]')");
+    $note['id'] = $db->lastInsertRowId();
+    $note['date'] = $date;
+    $response->getBody()->write(json_encode($note));
+    return $response
+        ->withStatus(201)
+        ->withHeader('Content-Type', 'application/json');
+    }
+);
+
 $app->run();

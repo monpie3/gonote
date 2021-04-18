@@ -52,8 +52,14 @@
         },
         methods : {
             addNote: function(note) {
-                this.notes.push(note);
+                var newNote = {
+                    name: note.name,
+                    content: note.content,
+                };
+                this.$http.post('notes', newNote).then((response) => {
+                this.notes.push(response.data);
                 this.showForm = true;
+                });
             },
             showNote: function(note) {
                 this.currentNote = note;
