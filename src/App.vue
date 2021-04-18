@@ -70,13 +70,19 @@
                 this.showForm = true;
             },
             deleteNote: function(note) {
-                this.showForm = false;
-                this.notes = this.notes.filter((n) => n !== note);
-                if (this.currentNote == note || this.notes.length == 0) {
-                    this.currentNote = null;
-                    this.showForm = true;
-                }
+                this.$http.delete(`notes/${note.id}`).then(() => {
+                    if (this.currentNote === note || this.notes.length == 0) {
+                        this.currentNote = null;
+                        this.showForm = true;
+                    }
+                    this.loadNotes();
+                });
             },
+            loadNotes: function() {
+                this.$http.get('notes').then(response => {
+                    this.notes = response.data;
+                });
+            }
         },
         mounted() {
             this.$http.get('notes').then(response => {

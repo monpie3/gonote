@@ -56,4 +56,13 @@ $app->post(
     }
 );
 
+$app->delete(
+    '/api/notes/{noteId}',
+    function (Request $request, Response $response, array $args) use($db) {
+        $response->getBody()->write(json_encode(['id' => $args['noteId']]));
+        $db->query("DELETE FROM note WHERE id = $args[noteId]");
+        return $response->withHeader('Content-Type', 'application/json');
+    }
+);
+
 $app->run();
